@@ -1,60 +1,51 @@
 <template>
-  <h1>{{ msg }}</h1>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Documentation</a> |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
-
-  <p>
-    Recommended setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a
-      href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
-      target="_blank"
-    >Vetur</a>
-    +
-    <a
-      href="https://marketplace.visualstudio.com/items?itemName=znck.vue-language-features"
-      target="_blank"
-    >Vue DX</a>
-  </p>
-  <p>
-    Make sure to use workspace version of TypeScript to get improved support via
-    <a
-      href="https://github.com/znck/vue-developer-experience"
-      target="_blank"
-    >@vuedx</a>.
-    <br />Note @vuedx is still experimental and this setup is provided for early feedback.
-  </p>
-  <button @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <Form @submit="register($event)" v-slot="{ meta: formMeta }">
+<Field name="password" rules="required" v-slot="{ field, meta }" v-model="user.password">
+  <label for="password-input">Password</label>
+  {{ meta }}
+  <input id="password-input" type="password" :class="{ 'is-invalid': meta.dirty && !meta.valid }" v-bind="field" />
+  <ErrorMessage name="password" class="error" />
+</Field>
+    <button :disabled="!formMeta.valid">Register</button>
+  </Form>
+  <!-- end::disabled-button[] -->
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+/* eslint-disable no-console */
+import { defineComponent, reactive } from 'vue';
+import { ErrorMessage, Field, Form, defineRule, configure } from 'vee-validate';
+import { confirmed, required } from '@vee-validate/rules';
+
+defineRule('required', required);
+defineRule('confirmed', confirmed);
+
+configure({
+  validateOnInput: true
+})
 
 export default defineComponent({
   name: 'HelloWorld',
-  props: {
-    msg: {
-      type: String,
-      required: true
-    }
+  components: {
+    ErrorMessage,
+    Field,
+    Form
   },
-  setup: () => {
-    const count = ref(0)
-    return { count }
+  setup() {
+    const user = reactive({ password: '' });
+
+    function register(values: any) {
+      console.log(values);
+    }
+
+    return { user, register };
   }
-})
+});
 </script>
 
 <style scoped>
-a {
-  color: #42b983;
+.is-invalid {
+  border: 3px red solid;
 }
 </style>
+

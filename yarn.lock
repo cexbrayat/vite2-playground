@@ -253,6 +253,11 @@
   dependencies:
     "@types/braces" "*"
 
+"@vee-validate/rules@4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@vee-validate/rules/-/rules-4.2.1.tgz#967712cda7b00f7ebbd6757c8a9cb33ece5a3f0b"
+  integrity sha512-TjB7myIDpyH5tBWP6A+nImYN14BBm50uxjTEl/pakq4b9K6gpicNcexVU3hUFeF8xsLcnOXk7RjW+XMAu4QvDQ==
+
 "@vitejs/plugin-vue@1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.1.4.tgz#1dd388519b75439b7733601b55238ca691864796"
@@ -1161,6 +1166,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+vee-validate@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-4.2.1.tgz#fbb5c60274febdde51aba96d02f292aa6220fc1a"
+  integrity sha512-dKqVmb0bQM5ri5y/YGnuROa6mq6QFI/m4n29u217Hn3OJiFku9Yb4lL56DlextZSRfGL/c5p2v9c+3tM0sm0BA==
 
 vite@2.0.0:
   version "2.0.0"
